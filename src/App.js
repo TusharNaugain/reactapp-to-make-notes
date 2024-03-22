@@ -1,10 +1,13 @@
-import React from 'react';
-import Display from './Components/Display';
+
+import React from "react";
+import Display from "./components/Display";
+
 
 const App = () => {
   return (
     <div>
-      <Display/>
+
+      <Display />
     </div>
   );
 };
