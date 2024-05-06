@@ -5,13 +5,12 @@ import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function Display() {
+export default function Displaynotes() {
   const [data, setData] = useState([]);
   const [notes, setNotes] = useState("");
   const [bold, setBold] = useState(false);
   const [italic, setItalic] = useState(false);
   const [underline, setUnderline] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const savedNotes = localStorage.getItem("notes");
@@ -66,29 +65,13 @@ export default function Display() {
     localStorage.setItem("notes", JSON.stringify(newData));
   };
 
-  const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-  };
-
-  const filteredData = data.filter((item) =>
-    item.note.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
   return (
     <div className="body">
       <div className={styles.border}>
         <div className={styles.list}>
           <h1>Your Notes List:</h1>
-          <input
-            type="text"
-            placeholder="Search Notes"
-            value={searchQuery}
-            onChange={handleSearch}
-            className={styles.searchInput}
-            style={{ marginLeft: "15px" }}
-          />
           <ul>
-            {filteredData.map((item, index) => (
+            {data.map((item, index) => (
               <li key={index}>
                 <div
                   style={{
